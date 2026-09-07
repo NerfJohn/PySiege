@@ -5,6 +5,7 @@
 import pygame
 from pygame.locals import *
 
+from Device.Gui import Gui
 from Domain.DataModel import DataModel
 
 ################################################################################
@@ -20,8 +21,7 @@ if __name__ == "__main__":
 
     # Init pygame details.
     pygame.init()
-    screen = pygame.display.set_mode((300, 300))
-    pygame.display.set_caption(model.m_prgmName)
+    gui = Gui(model)
     clock = pygame.time.Clock()
 
     # Main loop.
@@ -62,6 +62,7 @@ if __name__ == "__main__":
             model.m_cmdBuffer  = ""
             model.m_cmdRdy     = False
             model.m_gettingCmd = False
+        gui.draw()
 
         # MAINTENANCE: Maintain framerate.
         clock.tick(MAIN_FPS)
