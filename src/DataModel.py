@@ -13,10 +13,18 @@ class DataModel():
     # State machine.
     m_doExit   = False # bool: force program to exit 
 
+    # Inputs.
+    m_keyEvt   = None  # Event: last key pressed (Falling edge- None if cleared)
+    m_keyQuit  = False # bool: quit key pressed (Falling edge)
+
     # Defaults.
     def __init__(self):
         self.m_prgmName = "PySiege.py"
         self.m_doExit   = False
+        self.m_keyEvt   = None
+        self.m_keyQuit  = False
     def __str__(self):
         return f"(prgmName = {self.m_prgmName}, " + \
-                f"doExit = {self.m_doExit})"
+                f"doExit = {self.m_doExit}, "     + \
+                f"keyEvt = {self.m_keyEvt}, "     + \
+                f"keyQuit = {self.m_doQuit})"
