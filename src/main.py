@@ -6,6 +6,7 @@ import pygame
 from pygame.locals import *
 
 from DataModel import DataModel
+from StateFuncs import process_StateMachine
 
 ################################################################################
 
@@ -30,11 +31,8 @@ def collect_inputs(model: DataModel):
 ################################################################################
 # Process current states + inputs together.
 def process_data(model: DataModel):
-    # Prep conditions.
-    doExit = model.m_keyQuit or ((model.m_keyEvt != None) and (model.m_keyEvt.key == K_ESCAPE))
-
-    # Evaluate conditions.
-    model.m_doExit = doExit
+    # Run state evaluation.
+    process_StateMachine(model)
 
 ################################################################################
 # Start of program.
