@@ -6,6 +6,7 @@ import pygame
 from pygame.locals import *
 
 from DataModel import DataModel
+from CliFuncs import process_cli
 from StateFuncs import process_StateMachine
 
 ################################################################################
@@ -31,6 +32,9 @@ def collect_inputs(model: DataModel):
 ################################################################################
 # Process current states + inputs together.
 def process_data(model: DataModel):
+    # Process CLI.
+    process_cli(model)
+
     # Run state evaluation.
     process_StateMachine(model)
 

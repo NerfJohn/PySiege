@@ -51,18 +51,23 @@ def process_CommandState(model: DataModel):
     # Run entry (as applicable).
     if state.COMMAND != model.m_prvState:
         print("enter COMMAND state")
+        model.m_cmdOpen  = True
+        model.m_cmdRst   = True
         model.m_prvState = state.COMMAND
 
     # Prep conditions.
-    runCmd   = (model.m_keyEvt != None) and (model.m_keyEvt.key == K_RETURN)
+    runCmd   = model.m_cmdRdy
     doCancel = (model.m_keyEvt != None) and (model.m_keyEvt.key == K_ESCAPE)
 
     # Evaluate.
-    if   runCmd:   model.m_curState = state.INPUT
+    if   runCmd:   
+        model.m_curState = state.INPUT
+        model.m_cmdRun   = True
     elif doCancel: model.m_curState = state.INPUT
 
     # Run exit (as applicable).
     if state.COMMAND != model.m_curState:
+        model.m_cmdOpen = False
         print("exit COMMAND state")
 
 ################################################################################

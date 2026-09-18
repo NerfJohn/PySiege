@@ -21,6 +21,13 @@ class DataModel():
     m_keyEvt   = None          # Event: last key pressed (Falling edge- None if cleared)
     m_keyQuit  = False         # bool: quit key pressed (Falling edge)
 
+    # CLI Implement.
+    m_cmdOpen  = False         # bool: control to allow CLI to append key events
+    m_cmdRun   = False         # bool: control to allow CLI to run command
+    m_cmdRst   = False         # bool: control to allow CLI to be reset
+    m_cmdBuf   = ""            # str: command to receive/execute
+    m_cmdRdy   = False         # bool: indicator of command buffer being ready to execute
+
     # Defaults.
     def __init__(self):
         self.m_prgmName = "PySiege.py"
@@ -29,10 +36,20 @@ class DataModel():
         self.m_doExit   = False
         self.m_keyEvt   = None
         self.m_keyQuit  = False
+        self.m_cmdOpen  = False
+        self.m_cmdRun   = False
+        self.m_cmdRst   = False
+        self.m_cmdBuf   = ""
+        self.m_cmdRdy   = False
     def __str__(self):
         return f"(prgmName = {self.m_prgmName}, " + \
                 f"curState = {self.m_curState}, " + \
                 f"prvState = {self.m_prvState}, " + \
                 f"doExit = {self.m_doExit}, "     + \
                 f"keyEvt = {self.m_keyEvt}, "     + \
-                f"keyQuit = {self.m_doQuit})"
+                f"keyQuit = {self.m_keyQuit}, "   + \
+                f"cmdOpen = {self.m_cmdOpen}, "   + \
+                f"cmdRun = {self.m_cmdRun}, "     + \
+                f"cmdRst = {self.m_cmdRst}, "     + \
+                f"cmdBuf = {self.m_cmdBuf}, "     + \
+                f"cmdRdy = {self.m_cmdRdy})"
