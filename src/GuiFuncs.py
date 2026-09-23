@@ -9,12 +9,11 @@ from Domain.DataModel import DataModel
 ################################################################################
 
 # Screen sizing.
-X_SIZE = 600
-Y_SIZE = 400
+X_SIZE = 32 * (20)
+Y_SIZE = 32 * (11 + 2) # 11 vertical tiles + 2 for CLI/log.
 
 # Text box sizing.
-TEXT_OFFSET = 30
-
+TEXT_OFFSET = 32
 
 ################################################################################
 
@@ -40,6 +39,13 @@ def init_gui():
 def process_gui(model: DataModel):
     # Render background.
     g_screen.fill((0, 0, 0))
+
+    # Draw map tiles.
+    for i in range(20):
+        x = 32 * i
+        for j in range(13):
+            y = 32 * j
+            model.m_board[i][j].draw(g_screen, x, y)
 
     # Draw CLI (if in mode).
     if model.m_cmdOpen:

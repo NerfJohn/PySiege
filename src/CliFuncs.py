@@ -6,6 +6,7 @@ from pygame.locals import *
 from typing import List
 
 from Domain.DataModel import DataModel
+from Domain.TileType_e import TileType_e
 
 ################################################################################
 # Process model w.r.t. CLI.
@@ -47,8 +48,9 @@ def execute_command(model: DataModel):
     # Run handler.
     if len(argv):
         cmd = argv[0]
-        if "mdl" == cmd: cli_mdl(argv[1:], model)
-        if "cls" == cmd: cli_cls(argv[1:], model)
+        if "mdl"  == cmd: cli_mdl(argv[1:], model)
+        if "cls"  == cmd: cli_cls(argv[1:], model)
+        if "tset" == cmd: cli_tset(argv[1:], model)
         else:
             model.m_logBuf = f"Unknown Command: {cmd}"
             print(f"Unknown Command: {cmd}")
@@ -67,3 +69,31 @@ def cli_mdl(args: List[str], model: DataModel):
 def cli_cls(args: List[str], model: DataModel):
     model.m_logBuf = ""
     print("cleared log")
+
+################################################################################
+# CLI command to set tile type.
+def cli_tset(args: List[str], model: DataModel):
+    # vars.
+    x = 0
+    y = 0
+    t = 0
+
+    # Validate.
+    if len(args) < 3: 
+        model.m_logBuf = "usage- tset x y t"
+        return
+    else:
+        try:
+            x = int(args[0])
+            y = int(args[1])
+            t = int(args[2])
+        except Exception as e:
+            model.m_logBuf = f"{e}"
+            return
+    if (0 > x or x >= 20) or (0 > y or y >= 11):
+        model.m_logBuf = "Out of range"
+        return
+
+    # Implement.
+    model.m_board[x][y].m_tileType = TileType_e(t)
+    model.m_logBuf = "Set new tile"

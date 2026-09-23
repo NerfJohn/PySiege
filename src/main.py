@@ -6,6 +6,7 @@ import pygame
 from pygame.locals import *
 
 from Domain.DataModel import DataModel
+from Domain.MapTile_t import MapTile
 from GuiFuncs import init_gui, process_gui
 from CliFuncs import process_cli
 from StateFuncs import process_StateMachine
@@ -54,8 +55,9 @@ if __name__ == "__main__":
     clock  = pygame.time.Clock()
     init_gui()
 
-    # Init central model.
+    # Init central model + board.
     model = DataModel()
+    model.m_board = [[MapTile() for _ in range(13)] for _ in range(20)]
 
     while False == model.m_doExit:
         # INPUT-PROCESS-OUTPUT loop.

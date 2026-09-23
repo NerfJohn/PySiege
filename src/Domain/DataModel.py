@@ -17,6 +17,9 @@ class DataModel():
     m_prvState = state.INVALID # enum: previous state (ie last iteration)
     m_doExit   = False         # bool: force program to exit
 
+    # Core board.
+    m_board    = []            # 2D-lst: 2D array of map tiles. 
+
     # Inputs.
     m_keyEvt   = None          # Event: last key pressed (Falling edge- None if cleared)
     m_keyQuit  = False         # bool:  quit key pressed (Falling edge)
@@ -37,6 +40,7 @@ class DataModel():
         self.m_curState = state.INPUT
         self.m_prvState = state.INVALID
         self.m_doExit   = False
+        self.m_board    = []
         self.m_keyEvt   = None
         self.m_keyQuit  = False
         self.m_cmdOpen  = False
@@ -50,6 +54,7 @@ class DataModel():
                 f"curState = {self.m_curState}, " + \
                 f"prvState = {self.m_prvState}, " + \
                 f"doExit = {self.m_doExit}, "     + \
+                f"board = {self.m_board}, "       + \
                 f"keyEvt = {self.m_keyEvt}, "     + \
                 f"keyQuit = {self.m_keyQuit}, "   + \
                 f"cmdOpen = {self.m_cmdOpen}, "   + \
