@@ -50,6 +50,7 @@ def execute_command(model: DataModel):
         if "mdl" == cmd: cli_mdl(argv[1:], model)
         if "cls" == cmd: cli_cls(argv[1:], model)
         else:
+            model.m_logBuf = f"Unknown Command: {cmd}"
             print(f"Unknown Command: {cmd}")
 
     # Reset CLI.
