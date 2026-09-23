@@ -5,7 +5,6 @@
 from pygame.locals import *
 from typing import List
 
-from AppState_e import AppState_e as state
 from DataModel import DataModel
 
 ################################################################################
@@ -44,8 +43,6 @@ def reset_cli(model: DataModel):
 def execute_command(model: DataModel):
     # Convert command to string list.
     argv = [w for w in model.m_cmdBuf.split(" ") if w.strip()]
-
-
 
     # Run handler.
     if len(argv):

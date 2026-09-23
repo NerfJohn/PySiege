@@ -60,9 +60,7 @@ def process_CommandState(model: DataModel):
     doCancel = (model.m_keyEvt != None) and (model.m_keyEvt.key == K_ESCAPE)
 
     # Evaluate.
-    if   runCmd:   
-        model.m_curState = state.INPUT
-        model.m_cmdRun   = True
+    if   runCmd:   model.m_cmdRun   = True
     elif doCancel: model.m_curState = state.INPUT
 
     # Run exit (as applicable).

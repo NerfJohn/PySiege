@@ -6,6 +6,7 @@ import pygame
 from pygame.locals import *
 
 from DataModel import DataModel
+from GuiFuncs import init_gui, process_gui
 from CliFuncs import process_cli
 from StateFuncs import process_StateMachine
 
@@ -39,20 +40,28 @@ def process_data(model: DataModel):
     process_StateMachine(model)
 
 ################################################################################
+# Drive outputs.
+def drive_outputs(model: DataModel):
+    # Draw screen.
+    process_gui(model)
+
+################################################################################
 # Start of program.
 if __name__ == "__main__":
-    # Init central model.
-    model = DataModel()
-
     # Init pygame details.
     pygame.init()
-    screen = pygame.display.set_mode((600, 400))
+    pygame.font.init()
     clock  = pygame.time.Clock()
+    init_gui()
+
+    # Init central model.
+    model = DataModel()
 
     while False == model.m_doExit:
         # INPUT-PROCESS-OUTPUT loop.
         collect_inputs(model)
         process_data(model)
+        drive_outputs(model)
 
         # Maintain framerate.
         clock.tick(MAIN_FPS)
