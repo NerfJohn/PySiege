@@ -48,9 +48,9 @@ def execute_command(model: DataModel):
     # Run handler.
     if len(argv):
         cmd = argv[0]
-        if "mdl"  == cmd: cli_mdl(argv[1:], model)
-        if "cls"  == cmd: cli_cls(argv[1:], model)
-        if "tset" == cmd: cli_tset(argv[1:], model)
+        if   "mdl"  == cmd: cli_mdl(argv[1:], model)
+        elif "cls"  == cmd: cli_cls(argv[1:], model)
+        elif "tset" == cmd: cli_tset(argv[1:], model)
         else:
             model.m_logBuf = f"Unknown Command: {cmd}"
             print(f"Unknown Command: {cmd}")
