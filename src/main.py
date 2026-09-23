@@ -5,7 +5,7 @@
 import pygame
 from pygame.locals import *
 
-from DataModel import DataModel
+from Domain.DataModel import DataModel
 from GuiFuncs import init_gui, process_gui
 from CliFuncs import process_cli
 from StateFuncs import process_StateMachine

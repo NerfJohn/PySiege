@@ -4,7 +4,7 @@
 
 import pygame
 
-from DataModel import DataModel
+from Domain.DataModel import DataModel
 
 ################################################################################
 

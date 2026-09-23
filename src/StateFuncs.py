@@ -5,8 +5,8 @@
 from pygame.locals import *
 import sys
 
-from AppState_e import AppState_e as state
-from DataModel import DataModel
+from Domain.AppState_e import AppState_e as state
+from Domain.DataModel import DataModel
 
 ################################################################################
 # Root for running state machine evaluations.

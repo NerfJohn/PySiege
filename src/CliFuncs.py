@@ -5,7 +5,7 @@
 from pygame.locals import *
 from typing import List
 
-from DataModel import DataModel
+from Domain.DataModel import DataModel
 
 ################################################################################
 # Process model w.r.t. CLI.

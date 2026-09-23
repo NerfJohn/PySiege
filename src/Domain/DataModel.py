@@ -4,7 +4,7 @@
 
 from pygame.event import Event
 
-from AppState_e import AppState_e as state
+from Domain.AppState_e import AppState_e as state
 
 ################################################################################
 # Model of central data.
