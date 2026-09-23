@@ -48,6 +48,7 @@ def execute_command(model: DataModel):
     if len(argv):
         cmd = argv[0]
         if "mdl" == cmd: cli_mdl(argv[1:], model)
+        if "cls" == cmd: cli_cls(argv[1:], model)
         else:
             print(f"Unknown Command: {cmd}")
 
@@ -57,4 +58,11 @@ def execute_command(model: DataModel):
 ################################################################################
 # CLI command to print data model.
 def cli_mdl(args: List[str], model: DataModel):
+    model.m_logBuf = model.__str__()
     print(model)
+
+################################################################################
+# CLI command to print data model.
+def cli_cls(args: List[str], model: DataModel):
+    model.m_logBuf = ""
+    print("cleared log")

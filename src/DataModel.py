@@ -19,14 +19,17 @@ class DataModel():
 
     # Inputs.
     m_keyEvt   = None          # Event: last key pressed (Falling edge- None if cleared)
-    m_keyQuit  = False         # bool: quit key pressed (Falling edge)
+    m_keyQuit  = False         # bool:  quit key pressed (Falling edge)
 
     # CLI Implement.
     m_cmdOpen  = False         # bool: control to allow CLI to append key events
     m_cmdRun   = False         # bool: control to allow CLI to run command
     m_cmdRst   = False         # bool: control to allow CLI to be reset
-    m_cmdBuf   = ""            # str: command to receive/execute
+    m_cmdBuf   = ""            # str:  command to receive/execute
     m_cmdRdy   = False         # bool: indicator of command buffer being ready to execute
+
+    # GUI Implements.
+    m_logBuf   = ""            # str: text to show in the GUI's log box
 
     # Defaults.
     def __init__(self):
@@ -41,6 +44,7 @@ class DataModel():
         self.m_cmdRst   = False
         self.m_cmdBuf   = ""
         self.m_cmdRdy   = False
+        self.m_logBuf   = ""
     def __str__(self):
         return f"(prgmName = {self.m_prgmName}, " + \
                 f"curState = {self.m_curState}, " + \
@@ -52,4 +56,5 @@ class DataModel():
                 f"cmdRun = {self.m_cmdRun}, "     + \
                 f"cmdRst = {self.m_cmdRst}, "     + \
                 f"cmdBuf = {self.m_cmdBuf}, "     + \
-                f"cmdRdy = {self.m_cmdRdy})"
+                f"cmdRdy = {self.m_cmdRdy}, "     + \
+                f"logBuf = {self.m_logBuf})"

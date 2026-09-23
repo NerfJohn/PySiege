@@ -39,20 +39,42 @@ def init_gui():
 # Process model w.r.t. GUI.
 def process_gui(model: DataModel):
     # Render background.
-    g_screen.fill((30, 30, 30))
+    g_screen.fill((0, 0, 0))
+
+    # Draw CLI (if in mode).
+    if model.m_cmdOpen:
+        draw_cli(model)
 
     # Draw log.
-    update_log_box(model)
+    draw_log_box(model)
 
     # Show drawn screen.
     pygame.display.flip()
 
 ################################################################################
-# Updates log box visual (without draw/flip).
-def update_log_box(model: DataModel):
+# Updates CLI visual (without draw/flip).
+def draw_cli(model: DataModel):
     # Starting cordinates.
-    cords = (0, Y_SIZE - TEXT_OFFSET)
+    cords = (0, Y_SIZE - (2*TEXT_OFFSET))
+    rect  = (0, Y_SIZE - (2*TEXT_OFFSET), X_SIZE, TEXT_OFFSET)
+
+    # Draw background.
+    pygame.draw.rect(g_screen,(20, 20, 20), rect)
 
     # Render text.
-    logBox = g_textFont.render(f"LOG: {model.m_cmdBuf}", True, (255, 255, 255))
+    logBox = g_textFont.render(f"CMD: {model.m_cmdBuf}", True, (255, 255, 255))
+    g_screen.blit(logBox, cords)
+
+################################################################################
+# Updates log box visual (without draw/flip).
+def draw_log_box(model: DataModel):
+    # Starting cordinates.
+    cords = (0, Y_SIZE - TEXT_OFFSET)
+    rect  = (0, Y_SIZE - TEXT_OFFSET, X_SIZE, TEXT_OFFSET)
+
+    # Draw background.
+    pygame.draw.rect(g_screen,(30, 30, 30), rect)
+
+    # Render text.
+    logBox = g_textFont.render(f"LOG: {model.m_logBuf}", True, (255, 255, 255))
     g_screen.blit(logBox, cords)
